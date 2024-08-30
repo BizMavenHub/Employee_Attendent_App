@@ -20,6 +20,9 @@ const Login = async (req, res) => {
     return res.status(401).json({ message: "Invalid Password or Username" });
   }
 
+  const last_login = Date.now();
+  await User.findByIdAndUpdate(user._id, { last_login });
+
   if (username === user.username && password === user.password) {
     return res
       .status(200)
