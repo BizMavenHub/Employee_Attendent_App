@@ -1,0 +1,65 @@
+.container {
+  width: 500px;
+  box-shadow: 4px 5px 18px rgba(0, 0, 0, 0.5);
+  margin: 5% auto;
+  padding: 1rem 0 2rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 28pt;
+  padding: 1rem 0 2rem;
+}
+
+.form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  font-size: 10pt;
+}
+
+#username,
+#password {
+  width: 100%;
+  padding: 8px 8px;
+  margin: 8px 0;
+  font-size: 12pt;
+}
+
+.error {
+  color: red;
+  font-size: 12pt;
+  text-align: center;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.instruction {
+  text-align: center;
+  font-size: 12pt;
+  padding: 1rem 0 1rem;
+}
+
+.login-btn-container {
+  text-align: center;
+}
+
+#login-btn {
+  width: 60%;
+  padding: 12px 12px;
+  margin: 1rem 0;
+}
+
+.forgot-password-or-username {
+  text-align: center;
+  text-decoration: none;
+}
+
+.forgot-password-or-username:hover {
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+}
