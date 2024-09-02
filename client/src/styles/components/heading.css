@@ -1,0 +1,9 @@
+.heading-container {
+  padding: 1rem;
+  background-color: orangered;
+}
+.logo-name {
+  font-size: 18pt;
+  text-align: center;
+  color: white;
+}

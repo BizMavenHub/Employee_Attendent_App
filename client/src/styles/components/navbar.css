@@ -1,0 +1,29 @@
+.navbar-container {
+  padding: 1rem;
+  background-color: orangered;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.house-icon {
+  text-align: center;
+  padding: 0%;
+}
+
+ul li a,
+ul li span {
+  text-decoration: none;
+  font-size: 10pt;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

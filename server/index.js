@@ -8,7 +8,9 @@ const router = require("./routes/auth_Routes");
 
 const PORT = 3000;
 
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+const allowedOrigins = ["http://localhost:5173", "http://192.168.1.9:5173"];
+
+app.use(cors({ credentials: true, origin: allowedOrigins }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

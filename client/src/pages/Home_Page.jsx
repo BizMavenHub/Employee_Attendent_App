@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../redux/user/userSlice";
 import moment from "moment";
+import "../styles/home_page.css";
+import Narbar from "../components/Navbar";
+import Heading from "../components/Heading";
 
 const Home_Page = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -22,12 +25,14 @@ const Home_Page = () => {
   return (
     <>
       {!cookies.login_token ? (
-        <Link to={"/login"}>Please Login</Link>
-      ) : (
         <div>
-          <h1>Hello {currentUser.username}</h1>
-          <h1>Last Login : {moment(currentUser.last_login).format("LLL")}</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <Link to={"/login"}>Please Login</Link>
+        </div>
+      ) : (
+        <div className="home_page_logged_in_container">
+          <Heading />
+          <div className="main_container"></div>
+          <Narbar />
         </div>
       )}
     </>

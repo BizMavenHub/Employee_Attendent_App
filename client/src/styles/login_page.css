@@ -1,7 +1,7 @@
 .container {
-  width: 500px;
-  box-shadow: 4px 5px 18px rgba(0, 0, 0, 0.5);
-  margin: 5% auto;
+  width: 400px;
+  /* box-shadow: 4px 5px 18px rgba(0, 0, 0, 0.5); */
+  margin: 10% auto;
   padding: 1rem 0 2rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -14,7 +14,7 @@
 }
 
 .form {
-  width: 400px;
+  width: 90%;
   margin: 0 auto;
 }
 

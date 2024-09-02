@@ -1,0 +1,76 @@
+.back-btn {
+  border: none;
+  margin: 10px;
+  background: none;
+}
+
+.back-icon {
+  font-size: 18pt;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(183, 183, 183);
+  border-radius: 50%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-container {
+  text-align: center;
+}
+
+.info-container p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-container {
+  margin: 2.5rem 0 3rem 0;
+  width: 90%;
+}
+
+.card {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px rgba(128, 128, 128, 0.397) solid;
+}
+
+.icon-container {
+  width: 60px;
+  height: 60px;
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+  font-size: 10pt;
+}
+
+.logout-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn {
+  width: 80%;
+  text-align: center;
+  padding: 1rem;
+  background-color: red;
+  border: none;
+  font-size: 12pt;
+  color: white;
+  font-weight: bold;
+}
