@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 import {
   loginStart,
   loginSuccess,
@@ -44,15 +45,16 @@ const Login_Page = () => {
           password,
         }),
       });
+
       const data = await res.json();
+
       if (!res.ok) {
         dispatch(loginFailure());
         setError(data.message);
       }
       if (res.ok) {
-        dispatch(loginSuccess(data.user));
+        dispatch(loginSuccess(data.employee));
         navigate("/");
-        window.location.reload();
       }
     } catch (error) {
       console.log(error);

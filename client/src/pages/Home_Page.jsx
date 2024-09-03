@@ -13,18 +13,11 @@ const Home_Page = () => {
 
   const dispatch = useDispatch();
 
-  console.log(currentUser);
-
-  const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
-
-  const handleLogout = () => {
-    removeCookie("login_token");
-    dispatch(logoutSuccess());
-  };
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
 
   return (
     <>
-      {!cookies.login_token ? (
+      {!cookies.access_token ? (
         <div>
           <Link to={"/login"}>Please Login</Link>
         </div>
