@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB(); // Connect to MongoDB
 
-app.use("/auth/login", router);
+app.use("/auth/", router);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

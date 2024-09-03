@@ -33,7 +33,11 @@ const Login = async (req, res) => {
   if (username === user.username && password === user.password) {
     return res
       .status(200)
-      .cookie("login_token", user._id)
+      .cookie("login_token", user._id, {
+        maxAge: 1000 * 60, // 1 minute
+        secure: true,
+        sameSite: "none",
+      })
       .json({ message: "Login Successful", user: user });
   }
 };
