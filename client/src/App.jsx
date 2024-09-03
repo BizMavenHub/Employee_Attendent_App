@@ -5,6 +5,8 @@ import Login_Page from "./pages/Login_Page.jsx";
 import Profile_Page from "./pages/Profile_Page.jsx";
 import Create_Record_Page from "./pages/CreateRecord_Page.jsx";
 
+import IsLoginRoute from "./components/IsLoginRoute.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -12,8 +14,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home_Page />} />
           <Route path="/login" element={<Login_Page />} />
-          <Route path="/profile" element={<Profile_Page />} />
-          <Route path="/create-record" element={<Create_Record_Page />} />
+          <Route element={<IsLoginRoute />}>
+            <Route path="/profile" element={<Profile_Page />} />
+            <Route path="/create-record" element={<Create_Record_Page />} />
+          </Route>
         </Routes>
       </CookiesProvider>
     </BrowserRouter>
