@@ -34,7 +34,7 @@ const Login = async (req, res) => {
     return res
       .status(200)
       .cookie("login_token", user._id, {
-        maxAge: 1000 * 60, // 1 minute
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
         secure: true,
         sameSite: "none",
       })
