@@ -50,6 +50,7 @@ const Profile_Page = () => {
           <div className="info-container">
             <p>{currentUser.username}</p>
             <span>{moment(currentUser.last_login).format("LLL")}</span>
+            <h5>{currentUser.role}</h5>
           </div>
           <div className="card-container">
             {/* Birthday card */}

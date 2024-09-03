@@ -35,6 +35,10 @@
   margin-bottom: 8px;
 }
 
+.info-container h5 {
+  font-size: 14px;
+  margin-top: 10px;
+}
 .card-container {
   margin: 2.5rem 0 3rem 0;
   width: 90%;
