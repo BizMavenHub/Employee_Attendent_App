@@ -18,8 +18,6 @@ const Login_Page = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  useEffect(() => {}, []);
-
   async function handleLogin(e) {
     e.preventDefault();
 
@@ -55,6 +53,7 @@ const Login_Page = () => {
       if (res.ok) {
         dispatch(loginSuccess(data.employee));
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
