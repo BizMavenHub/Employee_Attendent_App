@@ -59,13 +59,17 @@ const Home_Page = () => {
         <div className="home_page_logged_in_container">
           <Heading />
           <div className="main_container">
-            {userTimeLogs.map((timeLog, index) => (
-              <RecordCard
-                key={index}
-                loginTime={timeLog.loginTime}
-                logoutTime={timeLog.logoutTime}
-              />
-            ))}
+            {userTimeLogs.length > 0 ? (
+              userTimeLogs.map((timeLog) => (
+                <RecordCard
+                  key={timeLog._id}
+                  loginTime={timeLog.loginTime}
+                  logoutTime={timeLog.logoutTime}
+                />
+              ))
+            ) : (
+              <p>No records found</p>
+            )}
           </div>
           <Narbar />
         </div>
