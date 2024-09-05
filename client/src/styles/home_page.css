@@ -1,13 +1,9 @@
 .home_page_logged_in_container {
   height: 100vh;
-}
-
-.home_page_logged_in_container p {
-  text-align: center;
-  padding: 6px 0 0;
-  font-size: 14pt;
+  min-height: 100vh;
 }
 
 .main_container {
   height: 100%;
+  padding: 1rem;
 }
