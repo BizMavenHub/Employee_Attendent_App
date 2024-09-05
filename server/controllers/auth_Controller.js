@@ -1,44 +1,47 @@
 const bcrypt = require("bcrypt");
+const jsonwebtoken = require("jsonwebtoken");
+const { v4: uuidv4 } = require("uuid");
 
-const User = require("../models/auth_Model");
+const Employee = require("../models/employee_Model");
+const TimeLog = require("../models/timeLog_Model");
 
 const Login = async (req, res) => {
   const { username, password } = req.body;
-
-  if (!username || !password)
+  if (!username || !password) {
     return res
       .status(400)
       .json({ message: "Please enter username and password" });
-
-  const user = await User.findOne({ username, password });
-
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
   }
 
-  if (!user.username || !user.password) {
-    return res.status(401).json({ message: "Invalid Password or Username" });
-  }
+  try {
+    const employee = await Employee.findOne({ username, password });
 
-  // Check if the last login time is different before updating
-  const currentTime = new Date();
-  const lastLoginTime = user.last_login ? new Date(user.last_login) : null;
+    if (!employee) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
 
-  if (!lastLoginTime || currentTime.getTime() !== lastLoginTime.getTime()) {
-    user.last_login = currentTime;
-    await user.save();
-  }
-  await user.save();
+    const currentTime = new Date();
+    employee.lastLoginTime = currentTime;
 
-  if (username === user.username && password === user.password) {
+    const token = uuidv4();
+
+    const timeLog = new TimeLog({
+      employeeId: employee._id,
+      loginTime: currentTime,
+    });
+
+    await timeLog.save();
+    await employee.save();
+
     return res
       .status(200)
-      .cookie("login_token", user._id, {
-        maxAge: 1000 * 60 * 60 * 24, // 1 day
-        secure: true,
-        sameSite: "none",
-      })
-      .json({ message: "Login Successful", user: user });
+      .cookie("access_token", token, { secure: false })
+      .json({ message: "Login successful", employee: employee });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 };
 
