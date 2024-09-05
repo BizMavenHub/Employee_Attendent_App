@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../styles/profile_page.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../redux/user/userSlice";
@@ -14,9 +14,36 @@ const Profile_Page = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
 
-  function handleLogout() {
-    removeCookie("login_token");
-    dispatch(logoutSuccess());
+  console.log(currentUser);
+
+  async function handleLogout() {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/timeLog/log-out/${currentUser._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+
+      console.log(data);
+
+      if (!res.ok) {
+        throw new Error(data.message);
+      }
+
+      if (res.ok) {
+        dispatch(logoutSuccess());
+        removeCookie("access_token");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -49,7 +76,7 @@ const Profile_Page = () => {
           </div>
           <div className="info-container">
             <p>{currentUser.username}</p>
-            <span>{moment(currentUser.last_login).format("LLL")}</span>
+            <span>{moment(currentUser.lastLoginTime).format("LLL")}</span>
             <h5>{currentUser.role}</h5>
           </div>
           <div className="card-container">
@@ -67,7 +94,11 @@ const Profile_Page = () => {
                   <path d="m7.994.013-.595.79a.747.747 0 0 0 .101 1.01V4H5a2 2 0 0 0-2 2v3H2a2 2 0 0 0-2 2v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a2 2 0 0 0-2-2h-1V6a2 2 0 0 0-2-2H8.5V1.806A.747.747 0 0 0 8.592.802zM4 6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v.414a.9.9 0 0 1-.646-.268 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0A.9.9 0 0 1 4 6.414zm0 1.414c.49 0 .98-.187 1.354-.56a.914.914 0 0 1 1.292 0c.748.747 1.96.747 2.708 0a.914.914 0 0 1 1.292 0c.374.373.864.56 1.354.56V9H4zM1 11a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.793l-.354.354a.914.914 0 0 1-1.293 0 1.914 1.914 0 0 0-2.707 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0 1.914 1.914 0 0 0-2.708 0 .914.914 0 0 1-1.292 0L1 11.793zm11.646 1.854a1.915 1.915 0 0 0 2.354.279V15H1v-1.867c.737.452 1.715.36 2.354-.28a.914.914 0 0 1 1.292 0c.748.748 1.96.748 2.708 0a.914.914 0 0 1 1.292 0c.748.748 1.96.748 2.707 0a.914.914 0 0 1 1.293 0Z" />
                 </svg>
               </div>
-              <p>Birthday</p>
+              <p>
+                {currentUser.birthday
+                  ? moment(currentUser.birthday).format("LL")
+                  : "Not Available"}
+              </p>
             </div>
 
             {/* Phone Number card */}
@@ -84,7 +115,7 @@ const Profile_Page = () => {
                   <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
                 </svg>
               </div>
-              <p>Phone Number</p>
+              <p>{currentUser.phoneNumber || "Not Available"}</p>
             </div>
 
             {/* Email card */}
@@ -101,7 +132,7 @@ const Profile_Page = () => {
                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
                 </svg>
               </div>
-              <p>Email</p>
+              <p>{currentUser.email || "Not Available"}</p>
             </div>
 
             {/* Monthly Income card */}
@@ -119,7 +150,13 @@ const Profile_Page = () => {
                   <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z" />
                 </svg>
               </div>
-              <p>Monthly Income</p>
+              <p>
+                {currentUser.totalHours
+                  ? `${(
+                      currentUser.hourlyRate * currentUser.totalHours
+                    ).toFixed(5)} $`
+                  : "Not Available"}
+              </p>
             </div>
 
             {/* Working Hours card */}
@@ -137,7 +174,11 @@ const Profile_Page = () => {
                   <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
                 </svg>
               </div>
-              <p>Working Hours</p>
+              <p>
+                {currentUser.totalHours
+                  ? `${currentUser.totalHours.toFixed(2)} h`
+                  : "Not Available"}
+              </p>
             </div>
           </div>
         </div>
