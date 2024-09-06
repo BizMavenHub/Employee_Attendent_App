@@ -10,6 +10,8 @@ const employeeSchema = new mongoose.Schema({
   lastLoginTime: { type: Date },
   hourlyRate: { type: Number },
   totalHours: { type: Number, default: 0 },
+  isAdmin: { type: Boolean, default: false },
+  profilePicture: { type: String },
 });
 
 module.exports = mongoose.model("Employee", employeeSchema);
