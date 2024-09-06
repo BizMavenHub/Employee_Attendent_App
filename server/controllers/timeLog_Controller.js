@@ -21,28 +21,6 @@ const getTimeLog = async (req, res) => {
   }
 };
 
-const logIn = async (req, res) => {
-  try {
-    const { employeeId } = req.params;
-    const employee = await Employee.findById(employeeId);
-
-    // Update the last login time
-    employee.lastLoginTime = new Date();
-    await employee.save();
-
-    const timeLog = new TimeLog({
-      employeeId: employee._id,
-      loginTime: employee.lastLoginTime,
-    });
-
-    await timeLog.save();
-
-    return res.status(200).json({ message: "Login successful", timeLog });
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
-
 const logOut = async (req, res) => {
   try {
     const { employeeId } = req.params;
@@ -77,4 +55,4 @@ const logOut = async (req, res) => {
   }
 };
 
-module.exports = { logIn, logOut, getUserTimeLog, getTimeLog };
+module.exports = { logOut, getUserTimeLog, getTimeLog };
