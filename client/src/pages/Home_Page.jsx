@@ -21,7 +21,7 @@ const Home_Page = () => {
   async function getUserTimeLogs() {
     try {
       const res = await fetch(
-        `http://localhost:3000/timeLog/${currentUser._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/timeLog/${currentUser._id}`,
         {
           method: "GET",
           headers: {
@@ -70,8 +70,8 @@ const Home_Page = () => {
             ) : (
               <p>No records found</p>
             )}
+            <Narbar />
           </div>
-          <Narbar />
         </div>
       )}
     </>
