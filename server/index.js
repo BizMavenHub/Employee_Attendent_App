@@ -7,6 +7,7 @@ const app = express();
 
 const authRouter = require("./routes/auth_Routes");
 const timeLogRouter = require("./routes/timeLog_Routes");
+const employeeRouter = require("./routes/employee_Routes");
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ connectDB(); // Connect to MongoDB
 
 app.use("/api/auth", authRouter);
 app.use("/api/timeLog", timeLogRouter);
+app.use("/api/employee", employeeRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
