@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../redux/user/userSlice";
 import { useCookies } from "react-cookie";
 
+import BackBtn from "../components/BackBtn";
+
 import moment from "moment";
 
 const Profile_Page = () => {
@@ -52,27 +54,7 @@ const Profile_Page = () => {
 
   return (
     <div className="">
-      <button className="back-btn">
-        <Link to="/">
-          <svg
-            className="back-icon"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 12h14M5 12l4-4m-4 4 4 4"
-            />
-          </svg>
-        </Link>
-      </button>
+      <BackBtn />
       <div className="profile-page">
         <div className="profile-container">
           <div className="image-container">
@@ -81,7 +63,10 @@ const Profile_Page = () => {
           <div className="info-container">
             <p>{currentUser.username}</p>
             <span>{moment(currentUser.lastLoginTime).format("LLL")}</span>
-            <h5>{currentUser.role}</h5>
+            <h5>
+              {currentUser.role}{" "}
+              <span>{currentUser.isAdmin ? " | Admin" : " | Employee"}</span>
+            </h5>
           </div>
           <div className="card-container">
             {/* Birthday card */}
