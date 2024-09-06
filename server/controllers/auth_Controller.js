@@ -1,23 +1,26 @@
 const bcrypt = require("bcrypt");
-const jsonwebtoken = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 
 const Employee = require("../models/employee_Model");
 const TimeLog = require("../models/timeLog_Model");
 
 const Login = async (req, res) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res
-      .status(400)
-      .json({ message: "Please enter username and password" });
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "Please enter email and password" });
   }
 
   try {
-    const employee = await Employee.findOne({ username, password });
+    const employee = await Employee.findOne({ email });
 
     if (!employee) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    const isValidPassword = await bcrypt.compare(password, employee.password);
+
+    if (!isValidPassword) {
+      return res.status(401).json({ message: "Invalid password" });
     }
 
     const currentTime = new Date();
