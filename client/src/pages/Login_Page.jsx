@@ -32,17 +32,20 @@ const Login_Page = () => {
     // Send a POST request to the server
     try {
       dispatch(loginStart());
-      const res = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        }
+      );
 
       const data = await res.json();
 

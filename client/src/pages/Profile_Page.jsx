@@ -10,6 +10,8 @@ import moment from "moment";
 const Profile_Page = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
 
+  console.log(import.meta.env.SERVER_URL);
+
   const dispatch = useDispatch();
 
   const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
@@ -19,7 +21,9 @@ const Profile_Page = () => {
   async function handleLogout() {
     try {
       const res = await fetch(
-        `http://localhost:3000/timeLog/log-out/${currentUser._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/api/timeLog/log-out/${
+          currentUser._id
+        }`,
         {
           method: "POST",
           headers: {
