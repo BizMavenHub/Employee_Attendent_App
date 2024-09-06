@@ -19,6 +19,7 @@
   width: 100%;
   border: 1px solid #ddd;
   height: 320px;
+  overflow-y: scroll;
 }
 
 th {
