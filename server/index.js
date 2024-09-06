@@ -19,8 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDB(); // Connect to MongoDB
 
-app.use("/auth", authRouter);
-app.use("/timeLog", timeLogRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/timeLog", timeLogRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
