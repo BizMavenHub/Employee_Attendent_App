@@ -11,16 +11,6 @@ const getUserTimeLog = async (req, res) => {
   }
 };
 
-const getTimeLog = async (req, res) => {
-  try {
-    const { timeLogId } = req.params;
-    const timeLog = await TimeLog.findById(timeLogId);
-    return res.status(200).json({ message: "Success", timeLog });
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
-
 const logOut = async (req, res) => {
   try {
     const { employeeId } = req.params;
@@ -55,4 +45,4 @@ const logOut = async (req, res) => {
   }
 };
 
-module.exports = { logOut, getUserTimeLog, getTimeLog };
+module.exports = { logOut, getUserTimeLog };
