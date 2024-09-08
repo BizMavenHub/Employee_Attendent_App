@@ -4,9 +4,9 @@ import Home_Page from "./pages/Home_Page.jsx";
 import Login_Page from "./pages/Login_Page.jsx";
 import Profile_Page from "./pages/Profile_Page.jsx";
 
-// import AddEmployee from "./pages/admin/AddEmployee.jsx";
-// import PersonalStatistic from "./pages/admin/PersonalStatistic.jsx";
-// import SearchUserStatistic from "./pages/admin/SearchUserStatistic.jsx";
+import AddEmployee from "./pages/admin/AddEmployee";
+import PersonalStatistic from "./pages/admin/PersonalStatistic";
+import SearchUserStatistic from "./pages/admin/SearchUserStatistic";
 
 import IsLoginRoute from "./components/IsLoginRoute.jsx";
 import IsAdminRoute from "./components/IsAdminRoute.jsx";
@@ -22,12 +22,15 @@ function App() {
             <Route path="/profile" element={<Profile_Page />} />
           </Route>
           <Route element={<IsAdminRoute />}>
-            {/* <Route path="/add-employee" element={<AddEmployee />} /> */}
-            {/* <Route path="/personal-statistic" element={<PersonalStatistic />} />
+            <Route path="/admin/addEmployee" element={<AddEmployee />} />
             <Route
-              path="/search-user-statistic"
+              path="/admin/personalStatistic"
+              element={<PersonalStatistic />}
+            />
+            <Route
+              path="/admin/searchUserStatistic"
               element={<SearchUserStatistic />}
-            /> */}
+            />
           </Route>
         </Routes>
       </CookiesProvider>
