@@ -10,8 +10,6 @@ const AddEmployee = () => {
 
   const [employeeData, setEmployeeData] = useState({});
 
-  useEffect(() => {}, []);
-
   async function handleSubmit(e) {
     e.preventDefault();
 

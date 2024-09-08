@@ -22,8 +22,6 @@ const Home_Page = () => {
   useEffect(() => {
     getUserTimeLogs();
     getEmployees();
-
-    console.log(userTimeLogs);
   }, [cookies.access_token]);
 
   async function getUserTimeLogs() {
