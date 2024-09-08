@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import BackBtn from "../../components/BackBtn";
 
-import "../../styles/admin/addEmployee.css";
+import "../../styles/admin_styles/addEmployee.css";
 
 const AddEmployee = () => {
   const navigate = useNavigate();

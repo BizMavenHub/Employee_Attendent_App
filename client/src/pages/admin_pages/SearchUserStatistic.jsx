@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import moment from "moment";
 import BackBtn from "../../components/BackBtn";
 
-import "../../styles/admin/searchEmployeeStatistic.css";
+import "../../styles/admin_styles/searchEmployeeStatistic.css";
 
 const SearchUserStatistic = () => {
   const [employeeLogTimes, setEmployeeLogTimes] = useState([]);
