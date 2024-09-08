@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import BackBtn from "../../components/BackBtn";
 
-import "../../styles/admin/addemployee.css";
+import "../../styles/admin/addEmployee.css";
 
 const AddEmployee = () => {
   const navigate = useNavigate();
@@ -43,8 +43,6 @@ const AddEmployee = () => {
   const handleChange = (e) => {
     setEmployeeData({ ...employeeData, [e.target.name]: e.target.value });
   };
-
-  console.log(employeeData);
 
   return (
     <div>
@@ -132,6 +130,19 @@ const AddEmployee = () => {
                 required
               />
             </div>
+          </div>
+          <div className="hourlyRate-group">
+            <p htmlFor="hourlyRate">HourlyRate</p>
+            <input
+              type="number"
+              name="hourlyRate"
+              min="0"
+              step="0.0001"
+              max="10000000000000000000"
+              id="hourlyRate"
+              onChange={handleChange}
+              value={employeeData.hourlyRate}
+            />
           </div>
           <input type="submit" value="Add Employee" />
         </form>

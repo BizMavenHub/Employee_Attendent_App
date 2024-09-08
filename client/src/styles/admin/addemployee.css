@@ -17,7 +17,8 @@ h1 {
 
 .email-group,
 .password-group,
-.phoneNumber-group {
+.phoneNumber-group,
+.hourlyRate-group {
   margin-top: 1rem;
 }
 
