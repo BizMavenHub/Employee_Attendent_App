@@ -12,8 +12,6 @@ import moment from "moment";
 const Profile_Page = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  console.log(import.meta.env.SERVER_URL);
-
   const dispatch = useDispatch();
 
   const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
