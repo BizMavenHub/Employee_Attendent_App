@@ -5,9 +5,9 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = express();
 
-const authRouter = require("./routes/auth_Routes");
-const timeLogRouter = require("./routes/timeLog_Routes");
-const employeeRouter = require("./routes/employee_Routes");
+const authRouter = require("../routes/auth_Routes");
+const timeLogRouter = require("../routes/timeLog_Routes");
+const employeeRouter = require("../routes/employee_Routes");
 
 dotenv.config();
 

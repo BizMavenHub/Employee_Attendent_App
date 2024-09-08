@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon api/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +17,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.0",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "vercel": "^37.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
