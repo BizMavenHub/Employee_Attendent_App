@@ -13,7 +13,7 @@ const getUserTimeLog = async (req, res) => {
 
 const getTimeLog = async (req, res) => {
   try {
-    const { employeeId, timeLogId } = req.params;
+    const { timeLogId } = req.params;
     const timeLog = await TimeLog.findById(timeLogId);
     return res.status(200).json({ message: "Success", timeLog });
   } catch (error) {
