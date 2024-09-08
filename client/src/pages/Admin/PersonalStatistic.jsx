@@ -4,7 +4,7 @@ import moment from "moment";
 
 import { useSelector } from "react-redux";
 
-import "../../styles/admin/personalstatistic.css";
+import "../../styles/admin/personalStatistic.css";
 
 const PersonalStatistic = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
