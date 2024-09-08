@@ -1,0 +1,8 @@
+td {
+  padding: 10px;
+  font-size: 10pt;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
