@@ -7,6 +7,12 @@ const getEmployees = async (req, res) => {
   return res.status(200).json({ message: "Success", employees: employees });
 };
 
+const getSpecificEmployee = async (req, res) => {
+  const { employee_id } = req.params;
+  const employee = await Employee.findById({ _id: employee_id });
+  return res.status(200).json({ message: "Success", employee: employee });
+};
+
 const addEmployee = async (req, res) => {
   try {
     const employeeData = req.body;
@@ -70,4 +76,4 @@ const addEmployee = async (req, res) => {
   }
 };
 
-module.exports = { getEmployees, addEmployee };
+module.exports = { getEmployees, getSpecificEmployee, addEmployee };
