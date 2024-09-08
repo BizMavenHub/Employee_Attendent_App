@@ -11,9 +11,14 @@ const employeeRouter = require("./routes/employee_Routes");
 
 dotenv.config();
 
-const CorsOption = ["http://localhost:5173", "http://192.168.1.9:5173"];
+const CorsOption = {
+  origin: process.env.CLIENT_URL, // Allow all origins
+  credentials: true,
+  optionSuccessStatus: 200,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
 
-app.use(cors({ credentials: true, origin: CorsOption }));
+app.use(cors(CorsOption));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
