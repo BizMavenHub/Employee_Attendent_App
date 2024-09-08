@@ -38,7 +38,7 @@ const Login = async (req, res) => {
 
     return res
       .status(200)
-      .cookie("access_token", token, { secure: false })
+      .cookie("access_token", token, { secure: false, expiresIn: "1d" })
       .json({ message: "Login successful", employee: employee });
   } catch (error) {
     if (error) {
