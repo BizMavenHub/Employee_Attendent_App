@@ -16,8 +16,6 @@ const Profile_Page = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
 
-  console.log(currentUser);
-
   async function handleLogout() {
     try {
       const res = await fetch(
@@ -34,8 +32,6 @@ const Profile_Page = () => {
       );
 
       const data = await res.json();
-
-      console.log(data);
 
       if (!res.ok) {
         throw new Error(data.message);
