@@ -5,8 +5,8 @@ import Login_Page from "./pages/Login_Page.jsx";
 import Profile_Page from "./pages/Profile_Page.jsx";
 
 // import AddEmployee from "./pages/admin/AddEmployee.jsx";
-import PersonalStatistic from "./pages/admin/PersonalStatistic.jsx";
-import SearchUserStatistic from "./pages/admin/SearchUserStatistic.jsx";
+// import PersonalStatistic from "./pages/admin/PersonalStatistic.jsx";
+// import SearchUserStatistic from "./pages/admin/SearchUserStatistic.jsx";
 
 import IsLoginRoute from "./components/IsLoginRoute.jsx";
 import IsAdminRoute from "./components/IsAdminRoute.jsx";
@@ -23,11 +23,11 @@ function App() {
           </Route>
           <Route element={<IsAdminRoute />}>
             {/* <Route path="/add-employee" element={<AddEmployee />} /> */}
-            <Route path="/personal-statistic" element={<PersonalStatistic />} />
+            {/* <Route path="/personal-statistic" element={<PersonalStatistic />} />
             <Route
               path="/search-user-statistic"
               element={<SearchUserStatistic />}
-            />
+            /> */}
           </Route>
         </Routes>
       </CookiesProvider>
