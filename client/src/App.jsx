@@ -22,13 +22,13 @@ function App() {
             <Route path="/profile" element={<Profile_Page />} />
           </Route>
           <Route element={<IsAdminRoute />}>
-            <Route path="/admin/addEmployee" element={<AddEmployee />} />
+            <Route path="/admin/add-employee" element={<AddEmployee />} />
             <Route
-              path="/admin/personalStatistic"
+              path="/admin/personal-statistic"
               element={<PersonalStatistic />}
             />
             <Route
-              path="/admin/searchUserStatistic"
+              path="/admin/search-user-statistic"
               element={<SearchUserStatistic />}
             />
           </Route>

@@ -83,16 +83,19 @@ const Home_Page = () => {
         </div>
 
         <div className="btn-container">
-          <Link className="add-employee-btn" to="/add-employee">
+          <Link className="add-employee-btn" to="/admin/add-employee">
             Add Employee
           </Link>
           <Link
             className="search-user-statistic-btn"
-            to="/search-user-statistic"
+            to="/admin/search-user-statistic"
           >
             Search User Statistic
           </Link>
-          <Link className="personal-statistic-btn" to="/personal-statistic">
+          <Link
+            className="personal-statistic-btn"
+            to="/admin/personal-statistic"
+          >
             Personal Statistic
           </Link>
         </div>
