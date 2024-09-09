@@ -11,15 +11,15 @@ const employeeRouter = require("../routes/employee_Routes");
 
 dotenv.config();
 
-const CorsOption = {
-  origin: process.env.CLIENT_URL, // Allow all origins
-  credentials: true,
-  optionSuccessStatus: 200,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
-
-app.use(cors(CorsOption));
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL, // Allow all origins
+    credentials: true,
+    optionSuccessStatus: 200,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
