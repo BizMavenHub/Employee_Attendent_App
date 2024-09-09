@@ -23,6 +23,12 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", process.env.CLIENT_URL);
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 connectDB(); // Connect to MongoDB
 
 app.use("/api/auth", authRouter);
