@@ -20,8 +20,10 @@ const Home_Page = () => {
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    getUserTimeLogs();
-    getEmployees();
+    if (cookies.access_token || currentUser) {
+      getUserTimeLogs();
+      getEmployees();
+    }
   }, []);
 
   async function getUserTimeLogs() {
@@ -146,17 +148,17 @@ const Home_Page = () => {
 
   return (
     <>
-      {!cookies.access_token ? (
-        <div>
-          <Link to={"/login"}>Please Login</Link>
-        </div>
-      ) : (
+      {cookies.access_token ? (
         <div className="home_page_logged_in_container">
           <Heading />
           <div>
             {currentUser.isAdmin ? <AdminContext /> : <EmployeeContext />}
             <Narbar />
           </div>
+        </div>
+      ) : (
+        <div>
+          <Link to={"/login"}>Please Login</Link>
         </div>
       )}
     </>
