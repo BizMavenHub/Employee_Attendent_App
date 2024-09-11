@@ -22,9 +22,7 @@ const Home_Page = () => {
   useEffect(() => {
     getUserTimeLogs();
     getEmployees();
-
-    setCookie("access_token", cookies.access_token, { path: "/" });
-  }, [cookies.access_token]);
+  }, []);
 
   async function getUserTimeLogs() {
     try {

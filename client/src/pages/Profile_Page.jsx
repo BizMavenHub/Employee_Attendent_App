@@ -14,7 +14,7 @@ const Profile_Page = () => {
 
   const dispatch = useDispatch();
 
-  const [cookies, setCookie, removeCookie] = useCookies(["login_token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
 
   async function handleLogout() {
     try {
